@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useGatherTodos from "../hooks/useGatherTodos";
 import TodoCounter from "./TodoCounter";
 
@@ -6,9 +6,15 @@ export default function Todolist() {
   const { todos, loading } = useGatherTodos();
   const [checkedTodos, setCheckedTodos] = useState(0);
 
-  const handleCheckboxChange = () => {
-    const checkedCheckboxes = document.querySelectorAll(
-      "input[type=checkbox]:checked"
+  const checkboxRefs = useRef({});
+
+  const handleCheckboxChange = (id) => {
+    checkboxRefs.current[id] = checkboxRefs.current[id] || {};
+
+    checkboxRefs.current[id].checked = !checkboxRefs.current[id].checked;
+
+    const checkedCheckboxes = Object.values(checkboxRefs.current).filter(
+      (checkbox) => checkbox.checked
     ).length;
     setCheckedTodos(checkedCheckboxes);
   };
@@ -27,7 +33,7 @@ export default function Todolist() {
                 <input
                   type="checkbox"
                   className="ml-2"
-                  onChange={handleCheckboxChange}
+                  onChange={() => handleCheckboxChange(todo.id)}
                 ></input>
               </li>
             ))}
