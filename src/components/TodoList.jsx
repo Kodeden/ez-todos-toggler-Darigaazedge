@@ -9,14 +9,15 @@ export default function Todolist() {
   const checkboxRefs = useRef({});
 
   const handleCheckboxChange = (id) => {
-    checkboxRefs.current[id] = checkboxRefs.current[id] || {};
+    checkboxRefs.current[id] = checkboxRefs.current[id] || {}; // initializes the checkbox reference for the given ID if it doesnt exist creating storage space
 
-    checkboxRefs.current[id].checked = !checkboxRefs.current[id].checked;
+    checkboxRefs.current[id].checked = !checkboxRefs.current[id].checked; // Toggles the checked property for a given ID.
 
     const checkedCheckboxes = Object.values(checkboxRefs.current).filter(
       (checkbox) => checkbox.checked
     ).length;
     setCheckedTodos(checkedCheckboxes);
+    // In a nutshell, takes the checkboxRefs.current and turns it into an array then filters out only the checked checkbox IDs, then gives me that number then sets checkedTodos to that number.
   };
 
   return (
@@ -25,10 +26,13 @@ export default function Todolist() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <section className="flex flex-row justify-center">
+        <section className="flex flex-row justify-center bg-black">
           <ul>
             {todos.map((todo) => (
-              <li key={todo.id} className="mb-2 flex items-center">
+              <li
+                key={todo.id}
+                className="mb-2 flex items-center text-indigo-500"
+              >
                 <span>{todo.title}</span>
                 <input
                   type="checkbox"
