@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function useGatherTodos() {
+export default function useManageTodos() {
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,5 +20,12 @@ export default function useGatherTodos() {
       });
   }, []);
 
-  return { todos, loading };
+  const handleButtonClick = (id) => {
+    const todoComplete = todos[id];
+    const updatedTodoList = todos.filter((_, i) => i !== id);
+    setTodos(updatedTodoList);
+    setCompletedTodos([...completedTodos, todoComplete]);
+  };
+
+  return { todos, completedTodos, loading, handleButtonClick };
 }
