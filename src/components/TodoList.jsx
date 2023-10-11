@@ -18,7 +18,6 @@ export default function Todolist() {
                 key={todo.id}
                 className="mb-2 flex items-center text-indigo-500"
               >
-                <span>{todo.title}</span>
                 <button onClick={() => handleButtonClick(id)}>
                   <img
                     src={CheckmarkImage}
@@ -26,6 +25,7 @@ export default function Todolist() {
                     className="mr-2 h-6 w-6"
                   />
                 </button>
+                <span>{todo.title}</span>
               </li>
             ))}
           </ul>
