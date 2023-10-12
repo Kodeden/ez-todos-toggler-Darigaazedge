@@ -1,13 +1,11 @@
-import { useState } from "react";
+import useIsOpen from "../hooks/useIsOpen";
 import useManageTodos from "../hooks/useManageTodos";
 
 export default function PopOutList() {
   const { completedTodos } = useManageTodos();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, togglePopOut } = useIsOpen();
+
   // THOUGHT!!! Switch from checkbox to small button (complete or something) and then move to completedTodo list. The TodoCounter will measure the length of the CompletedTodo list as use that as a number.
-  const togglePopOut = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <>
