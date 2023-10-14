@@ -25,17 +25,12 @@ export default function useManageTodos() {
     const updatedTodoList = todos.filter((_, i) => i !== id);
     setTodos(updatedTodoList);
     setCompletedTodos([...completedTodos, todoComplete]);
-    console.log(completedTodos);
-    console.log(completedTodos.length);
   };
-
-  const completedCounter = completedTodos.length;
 
   return {
     todos,
     completedTodos,
     loading,
-    completedCounter,
     handleButtonClick,
   };
 }

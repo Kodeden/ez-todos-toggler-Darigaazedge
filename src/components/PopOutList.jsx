@@ -9,11 +9,9 @@ export default function PopOutList() {
 
   return (
     <>
-      <section className="flex justify-end bg-black">
+      <section className="flex justify-start bg-black">
         <button
-          className={`mb-2 transform rounded bg-indigo-500 px-4 py-2 font-bold text-white transition duration-300 ease-out hover:bg-blue-700 ${
-            isOpen ? "-translate-x-74" : "translate-x-0"
-          }`}
+          className="mb-2  rounded bg-indigo-500 px-4 py-2 font-bold text-white  hover:bg-blue-700"
           onClick={togglePopOut}
         >
           {isOpen ? "-" : "+"}
@@ -29,7 +27,7 @@ export default function PopOutList() {
                 Completed Todos:
               </h1>
               <ul>
-                {completedTodos.map((todo, id) => (
+                {completedTodos.map((todo) => (
                   <li
                     key={todo.id}
                     className="mb-2 flex items-center text-indigo-500"
