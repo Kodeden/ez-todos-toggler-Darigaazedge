@@ -15,6 +15,7 @@ export default function Todolist() {
       {loading ? (
         <p>Loading...</p>
       ) : (
+        // TODO{jeremy} - refactor this into more components. It's kind of a mess.
         <div className="bg-black">
           <button
             className="mb-2  rounded bg-indigo-500 px-4 py-2 font-bold text-white  hover:bg-blue-700"

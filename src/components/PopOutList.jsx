@@ -8,7 +8,6 @@ export default function PopOutList() {
   // THOUGHT!!! Switch from checkbox to small button (complete or something) and then move to completedTodo list. The TodoCounter will measure the length of the CompletedTodo list as use that as a number.
 
   return (
-    <>
       <section className="flex justify-start bg-black">
         <button
           className="mb-2  rounded bg-indigo-500 px-4 py-2 font-bold text-white  hover:bg-blue-700"
@@ -40,6 +39,5 @@ export default function PopOutList() {
           )}
         </div>
       </section>
-    </>
   );
 }
