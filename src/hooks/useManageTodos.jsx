@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useManageTodos() {
+  const [initialTodosCount, setInitialTodosCount] = useState(0);
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,6 +13,7 @@ export default function useManageTodos() {
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);
+        setInitialTodosCount(data.length);
         setLoading(false);
       })
       .catch((error) => {
@@ -31,6 +33,7 @@ export default function useManageTodos() {
     todos,
     completedTodos,
     loading,
+    initialTodosCount,
     handleButtonClick,
   };
 }

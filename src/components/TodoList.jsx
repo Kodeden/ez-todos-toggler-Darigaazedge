@@ -28,8 +28,12 @@ export default function Todolist() {
                 <li
                   key={todo.id}
                   className="mb-2 flex items-center text-indigo-500"
+                  data-testid="todos"
                 >
-                  <button onClick={() => handleButtonClick(id)}>
+                  <button
+                    data-testid="checkboxButton"
+                    onClick={() => handleButtonClick(id)}
+                  >
                     <img
                       src={CheckmarkImage}
                       alt="checkmark icon"
